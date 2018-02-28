@@ -10,9 +10,9 @@
 </head>
 <body>
 <div id="webgl"></div>
-<script src="../lib/three.min.js"></script>
-<script src="../lib/TrackballControls.js"></script>
-<script src="../lib/TerrainLoader.js"></script>
+<script src="lib/three.min.js"></script>
+<script src="lib/TrackballControls.js"></script>
+<script src="lib/TerrainLoader.js"></script>
 <script>
     var width  = window.innerWidth,
         height = window.innerHeight;
@@ -24,14 +24,14 @@
     var renderer = new THREE.WebGLRenderer();
     renderer.setSize(width, height);
     var terrainLoader = new THREE.TerrainLoader();
-    terrainLoader.load('../assets/halfdome.bin', function(data){
+    terrainLoader.load('assets/halfdome.bin', function(data){
       console.log(data);
       var geometry = new THREE.PlaneGeometry(427, 232, 426, 231);
       for(var i=0, l=geometry.vertices.length; i<l; i++){
         geometry.vertices[i].z = data[i] / 65535 * 100;
       }
       var material = new THREE.MeshPhongMaterial({
-        map: THREE.ImageUtils.loadTexture('../assets/halfdome_colorful_3.png')
+        map: THREE.ImageUtils.loadTexture('assets/halfdome_colorful_3.png')
       });
       var plane = new THREE.Mesh(geometry, material);
       var light = new THREE.AmbientLight(0xeeeeee);
